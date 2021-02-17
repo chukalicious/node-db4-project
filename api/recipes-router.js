@@ -27,4 +27,18 @@ router.get("/:id/shopping_list", async (req, res) => {
   }
 });
 
+router.get("/ingredients/:id/recipe", async (req, res) => {
+  const { id } = req.params;
+  const ingredient = await Recipes.getIngredients(id);
+  if (!ingredient) {
+    res.status(404).json({ message: "there's not an ingredient by that Id" });
+  } else {
+    try {
+      res.status(200).json(ingredient);
+    } catch (err) {
+      res.status(500).json({ message: "server error", error: err.message });
+    }
+  }
+});
+
 module.exports = router;

@@ -7,10 +7,23 @@ module.exports = {
   get,
   findRecipeById,
   getShoppingList,
+  getIngredients,
 };
 
 function get() {
   return db("recipes");
+}
+
+function getIngredients(ingredientId) {
+  return db("ingredients as i")
+    .join("recipes as r", "i.recipe_id", "r.id")
+    .where("i.id", ingredientId)
+    .select(
+      "i.ingredient_name",
+      "i.id as ingredientId",
+      "r.id as recipe it belongs to",
+      "r.recipe_title"
+    );
 }
 
 //GET /api/recipes/:id/shoppingList: a list of

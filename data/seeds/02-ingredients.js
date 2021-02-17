@@ -26,6 +26,13 @@ exports.seed = function (knex) {
           recipe_id: 3,
           unit: "cup",
         },
+        {
+          id: 4,
+          ingredient_name: "ricotta cheese",
+          quantity: 0.5,
+          recipe_id: 3,
+          unit: "cup",
+        },
       ]);
     });
 };
