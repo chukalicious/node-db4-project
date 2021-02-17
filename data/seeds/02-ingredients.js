@@ -28,7 +28,14 @@ exports.seed = function (knex) {
         },
         {
           id: 4,
-          ingredient_name: "ricotta cheese",
+          ingredient_name: "cheese",
+          quantity: 0.5,
+          recipe_id: 1,
+          unit: "cup",
+        },
+        {
+          id: 5,
+          ingredient_name: "cheese",
           quantity: 0.5,
           recipe_id: 3,
           unit: "cup",
