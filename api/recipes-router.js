@@ -13,6 +13,18 @@ router.get("/", async (req, res) => {
   }
 });
 
-// router.post(){}
+router.get("/:id/shopping_list", async (req, res) => {
+  const { id } = req.params;
+  const recipe = await Recipes.getShoppingList(id);
+  if (!recipe) {
+    res.status(404).json({ message: "Could not find recipe by the Id" });
+  } else {
+    try {
+      res.status(200).json(recipe);
+    } catch (err) {
+      res.status(500).json({ message: "server error" });
+    }
+  }
+});
 
 module.exports = router;
